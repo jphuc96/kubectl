@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag jphuc96/kubectl:${{ steps.branch_name.outputs.SOURCE_TAG }} --tag jphuc96/kubectl:latest
     - name: Login to Docker Hub
-      run: docker login -u ${{ DOCKER_USER }} -p ${{ DOCKER_PASSEWORD }}
+      run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSEWORD }}
     - name: Push image
       run: docker push jphuc96/kubectl:${{ steps.branch_name.outputs.SOURCE_TAG }} && docker push jphuc96/kubectl:latest     
